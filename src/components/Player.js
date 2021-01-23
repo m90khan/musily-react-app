@@ -6,7 +6,7 @@ import {
   faAngleRight,
   faVolumeDown,
 } from '@fortawesome/free-solid-svg-icons';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { playAudio } from '../util';
 const Player = ({
@@ -89,58 +89,58 @@ const Player = ({
     setSongInfo({ ...songInfo, volume: value });
   };
   return (
-    <div className="player">
-      <div className="time-control">
+    <div className='player'>
+      <div className='time-control'>
         <p>{getTime(songInfo.currentTime)}</p>
         <div
           style={{
             background: `linear-gradient(to right, ${currentSong.color[0]},${currentSong.color[1]})`,
           }}
-          className="track"
+          className='track'
         >
           <input
-            type="range"
+            type='range'
             min={0}
             max={songInfo.duration || 0}
             value={songInfo.currentTime}
             onChange={dragHandler}
           />{' '}
-          <div style={trackAnim} className="animate-track"></div>
+          <div style={trackAnim} className='animate-track'></div>
         </div>
         <p>{songInfo.duration ? getTime(songInfo.duration) : '0:00'}</p>
       </div>
-      <div className="play-control">
+      <div className='play-control'>
         <FontAwesomeIcon
           onClick={() => skipTrackHandler('skip-back')}
-          className="skip-back"
-          size="2x"
+          className='skip-back'
+          size='2x'
           icon={faAngleLeft}
         />
         <FontAwesomeIcon
           onClick={playSongHandler}
-          className="play"
-          size="4x"
+          className='play'
+          size='4x'
           icon={isPlaying ? faPause : faPlay}
         />
         <FontAwesomeIcon
-          className="skip-forward"
-          size="2x"
+          className='skip-forward'
+          size='2x'
           icon={faAngleRight}
           onClick={() => skipTrackHandler('skip-forward')}
         />
         <FontAwesomeIcon
           onClick={() => setActiveVolume(!activeVolume)}
-          size="2x"
+          size='2x'
           icon={faVolumeDown}
         />
         {activeVolume && (
           <input
             onChange={changeVolume}
             value={songInfo.volume}
-            max="1"
-            min="0"
-            step="0.01"
-            type="range"
+            max='1'
+            min='0'
+            step='0.01'
+            type='range'
           />
         )}
       </div>
